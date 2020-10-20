@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import cn.hutool.core.text.StrSpliter;
 import cn.hutool.system.UserInfo;
+import com.alibaba.fastjson.JSON;
 import entity.User;
 import md5.Md5Util;
 import org.apache.commons.codec.binary.Hex;
@@ -80,6 +81,15 @@ public class AppTest
         return i + 1;
     }
 
+    @Test
+    public void test03(){
+        String json =
+                "{\"name\": \"demoData\",\n"
+                        + "\"gender\": \"demoData\",\n"
+                        + "\"age\": 1,\n"
+                        + "\"action\":\"eatApple\"\n }";
+//        return JSON.toJavaObject(.)
+    }
 
 
 }

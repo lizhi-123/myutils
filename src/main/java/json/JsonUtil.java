@@ -18,18 +18,28 @@ public class JsonUtil {
     //language=JSON
     private static String jsonStr = "{\"msg\":\"success\",\"code\":200,\"result\": [{\"name\": \"张飞\",\"age\": 18},{\"name\": \"关羽\",\"age\": 19}]}";
 
+
+
     public static  void test01(){
         //json字符串转json
         JSONObject object = JSONObject.parseObject(jsonStr);
         System.out.println(object);
         //json字符串获取里面的list
         List result = (List) object.get("result");
-        System.out.println(result.get(0));
+        Map<String,Object> o = (Map<String, Object>) result.get(0);
+        System.out.println(o.get("age"));
+    }
 
+    public static  Result<Map<String, Object>> test02(){
+        //json字符串转json
+        JSONObject object = JSONObject.parseObject(jsonStr);
+
+
+        return object.toJavaObject(Result.class);
     }
 
     public static void main(String[] args) {
-        test01();
+        System.out.println(test02());
     }
 
 }

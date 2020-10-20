@@ -80,7 +80,6 @@ public class ExcelTest {
         try {
             // ClassPathResource类的构造方法接收路径名称，自动去classpath路径下找文件
             ClassPathResource classPathResource = new ClassPathResource("test/test.txt");
-
             // 获得File对象，当然也可以获取输入流对象
             File file = classPathResource.getFile();
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file)); //相对文件路径，如果是放在项目文件夹下，则为new FileReader("test.txt");
