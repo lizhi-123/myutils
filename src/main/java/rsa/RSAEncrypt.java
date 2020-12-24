@@ -56,6 +56,7 @@ public class RSAEncrypt {
     public static String encrypt( String str, String publicKey ) throws Exception{
         //base64编码的公钥
         byte[] decoded = Base64.decodeBase64(publicKey);
+        System.out.println(">>>>"+new String(decoded));
         RSAPublicKey pubKey = (RSAPublicKey) KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(decoded));
         //RSA加密
         Cipher cipher = Cipher.getInstance("RSA");
@@ -89,6 +90,9 @@ public class RSAEncrypt {
     }
 
     public static void main(String[] args) throws Exception {
+         String public_key="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDbykZh8nGugR4hMUtXeQBpMFhif0JXBAzR8KCLapoXtMfO6vXrkKU1ZtBxGAg7nnyItbEkAMNB3ONQcaI4naXnfsjbs083bE9dkvtov8VeHyHM7n/0O6ULcZsFTJvP1z5Z4aifzjh4DZU3Fsw2TT2xz1k9WKibeFtOxLj21XNccQIDAQAB";
+         String secret_key = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBANvKRmHyca6BHiExS1d5AGkwWGJ/QlcEDNHwoItqmhe0x87q9euQpTVm0HEYCDuefIi1sSQAw0Hc41Bxojidped+yNuzTzdsT12S+2i/xV4fIczuf/Q7pQtxmwVMm8/XPlnhqJ/OOHgNlTcWzDZNPbHPWT1YqJt4W07EuPbVc1xxAgMBAAECgYAGeCC0N1ejREenwHSwQW6Cqhqf45EHUKYz87o2AFBCzF5pN78/TMWgGcOe4I81ege+WmK5ZZBZuu+x6XZV5kYAyVwjYojBoqKQnfF4r0DUCrUf4SGSDqJQTrXw5yo7JpXzbPuOs82FlOZ0SIZO4zX6nG04ox1ft/0iBRFN1iAkQQJBAPwiksPBmPrX57O7vEfNq707WTJZ4BFvuQfgj0aM7YyMGcKhwYJ75IQBSUGgriX50vskTrTay33zHwrsAZQFYpkCQQDfKMYgPU5dzH6yP3UqIXYxcELdAF0hAIK3dtReByUR4eRtMiyMNF0R3hcb059PGKFUbZdnazrlMWAjh0wf20eZAkBAqQEocLKxycLjBgdABs+/RMQYNJJRBmzWR1GXDzcwbxGAJ4l/1BQDgmzuBq4CkTH5NBN3MBE1qK7SVzoEYukpAkEAoiyUh1tmNx5kuI8LS5nTtiv6O3eHNnOTi1atEMQqeWtrQLvkyeNH+7MlohBRxv6ER8H49Kxluaf/UPKDLOeDiQJADpXpvFeIXsRyMxaoR45543emA40hNsYe/wrv2Rzb188R2d/WdHg9dhUtoIql/KK92usGlGJL5ffG4I0TyUFr3A==";
+
         //生成公钥和私钥
         Map<Integer, String> keyMap = genKeyPair();
         String publicKey = keyMap.get(0);
@@ -97,9 +101,10 @@ public class RSAEncrypt {
         System.out.println("privateKey:"+privateKey);
         String name = "张三丰";
         //加密
-        String encrypt = encrypt(name, publicKey);
+        String encrypt = encrypt(name, public_key);
+        System.out.println(encrypt);
         //解密
-        String  decrypt = decrypt(encrypt,privateKey);
+        String  decrypt = decrypt(encrypt,secret_key);
         System.out.println(decrypt);
 
 

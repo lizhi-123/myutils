@@ -13,7 +13,10 @@ class GetUtil {
 
     public static String sendGet(String url, String param) {
         StringBuilder result = new StringBuilder();
-        String urlName = url + "?" + param;
+        String urlName = url;
+        if (param!=null){
+             urlName = url + "?" + param;
+        }
         System.out.println("urlName:"+urlName);
         try {
             URL realURL = new URL(urlName);
@@ -45,7 +48,8 @@ class GetUtil {
         public static void main(String[] args) throws Exception {
             String url = "http://wap.scgh114.com/singleLogin/authtoken";
             String param = "appkey=yinong_app&phone=18950905558&code=a826eebce4934478ae593c5c0c3bcbda&sign=6EFA8B33EB4F56EB16731FBFE50A1BE3&qDT2VUhE=qGrpkqr0wop0wop0wok_zF3RB9jTwYZjWlCuNcUVbgWqqoA";
-            String result = sendGet(url, param);
+            String zhugeUrl = "http://hlbzb.tyfo.com:8800/v2/stat/7?metrics=occurrences&dimensions=$day,event.maid&conditions={\"$event_name\":[\"==\",\"首页-便民服务\"],$day\":[\"between\",\"2020-11-01\",\"2020-11-17\"],\"event.位置\":[\"==\",\"114挂号\"]}";
+            String result = sendGet(zhugeUrl, null);
             System.out.println(result);
         }
 

@@ -1,9 +1,14 @@
 package hutools;
 
 import cn.hutool.core.convert.Convert;
+import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpUtil;
 import org.junit.Test;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @ClassName HutoolTest
@@ -15,12 +20,18 @@ public class HutoolTest {
 
     @Test
     public void String2Date() {
-        String a = "2017-05-06";
-        Date dataA = Convert.toDate(a);
-        System.out.println(dataA); //Sat May 06 00:00:00 CST 2017
-        String b = "2019/08/08 12:23:22";
-        Date datab = Convert.toDate(b);
-        System.out.println(datab); //Thu Aug 08 12:23:22 CST 2019
+        Map<String,Object> map    = new HashMap<>();
+        map.put("name","张三");
+        map.put("age",12);
+
+//        System.out.println(HttpRequest.get("http://192.168.0.104:8080/test").setEncodeUrlParams(true).form(map).execute());
+        String params = HttpUtil.toParams(map, StandardCharsets.UTF_8);
+        String url = HttpUtil.urlWithForm("http://192.168.0.104:8080/test", map, StandardCharsets.UTF_8, false);
+        System.out.println("url-->"+url);
+        System.out.println(params);
+        System.out.println(HttpUtil.get("http://192.168.0.104:8080/test?" + params));
+
+
     }
 
 }
