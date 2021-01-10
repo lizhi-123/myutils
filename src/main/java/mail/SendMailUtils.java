@@ -60,6 +60,7 @@ public class SendMailUtils {
         // 4. 根据 Session 获取邮件传输对象
         Transport transport = session.getTransport();
 
+
         transport.connect(myEmailAccount, myEmailAuthPassword);
 
         // 6. 发送邮件, 发到所有的收件地址, message.getAllRecipients() 获取到的是在创建邮件对象时添加的所有收件人, 抄送人, 密送人
@@ -100,9 +101,9 @@ public class SendMailUtils {
 //         String receiveMailAccount = "1782072968@qq.com";
           String myEmailSMTPHost = "smtp.163.com";
         //发送的信息 主题
-         String subject = "你吃饭了吗?";
+         String subject = "?";
         //发送的信息 邮件正文
-         String content = "你吃多了吧？<a href='https://www.baidu.com/s?ie=UTF-8&wd=%E4%BD%A0%E5%90%83%E4%BA%86%E5%90%97'>百度一下</a>";
+         String content = "你才猝死了 你再说我天天给你发邮件";
          String contentType = "text/html;charset=UTF-8";
         SendMailUtils utils = new SendMailUtils(myEmailAccount,myEmailAuthPassword,receiveMailAccount,myEmailSMTPHost);
         try {
